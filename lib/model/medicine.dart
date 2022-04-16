@@ -1,0 +1,60 @@
+class Medicine {
+  String name;
+  String formula;
+  double condition;
+  String expireDate;
+  int qty;
+  String type;
+  String desc;
+  List<String> imgs;
+
+  //construtor
+  Medicine({
+    required this.name,
+    required this.formula,
+    required this.condition,
+    required this.expireDate,
+    required this.qty,
+    required this.type,
+    required this.desc,
+    required this.imgs,
+  });
+  Medicine.empty({
+    this.name = '',
+    this.formula = '',
+    this.condition = 0,
+    this.expireDate = '',
+    this.qty = 0,
+    this.type = '',
+    this.desc = '',
+    this.imgs = const [],
+  });
+
+  //
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'formula': formula,
+      'condition': condition,
+      'expireDate': expireDate,
+      'qty': qty,
+      'type': type,
+      'desc': desc,
+      'imgs': imgs,
+    };
+  }
+
+  factory Medicine.fromMap(Map<String, dynamic> map) {
+    return Medicine(
+      name: map['name'] ?? '',
+      formula: map['formula'] ?? '',
+      condition: map['condition']?.toDouble() ?? 0.0,
+      expireDate: map['expireDate'] ?? '',
+      qty: map['qty']?.toInt() ?? 0,
+      type: map['type'] ?? '',
+      desc: map['desc'] ?? '',
+      imgs: List<String>.from(map['imgs'] ?? []),
+    );
+  }
+}
