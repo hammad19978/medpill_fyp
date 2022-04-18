@@ -1,7 +1,7 @@
 class Medicine {
   String name;
   String formula;
-  double condition;
+  double? condition;
   String expireDate;
   int qty;
   String type;
@@ -22,15 +22,13 @@ class Medicine {
   Medicine.empty({
     this.name = '',
     this.formula = '',
-    this.condition = 0,
+    this.condition = 0.0,
     this.expireDate = '',
     this.qty = 0,
     this.type = '',
     this.desc = '',
     this.imgs = const [],
   });
-
-  //
 
   Map<String, dynamic> toMap() {
     return {

@@ -9,7 +9,7 @@ import 'package:medpill_fyp/viewsScreens/request.dart';
 import '../Tabs/DonationTab.dart';
 import '../Tabs/SaleTab.dart';
 import '../colorCode/colors.dart';
-import 'addbook.dart';
+import 'addMedicine.dart';
 import 'myupload.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -249,7 +249,7 @@ class _Home_ScreenState extends State<Home_Screen>
                           child: SizedBox.fromSize(
                             size: Size.fromRadius(48), // Image radius
                             child: Image.asset('assets/medpill.jpeg',
-                                fit: BoxFit.fill),
+                                fit: BoxFit.cover),
                           ),
                         )),
                   ),

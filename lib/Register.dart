@@ -70,7 +70,6 @@ class RegisterationScreen extends StatelessWidget {
                                   primary: Color(ColorCodes.bg)),
                               onPressed: () async {
                                 if (!formKey.currentState!.validate()) return;
-
                                 Users user = Users.empty();
                                 user.name = nameController.text;
                                 user.cnic = cnicController.text;

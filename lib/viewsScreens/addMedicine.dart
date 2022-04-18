@@ -18,6 +18,14 @@ class AddBook extends StatefulWidget {
 }
 
 class _AddBookState extends State<AddBook> {
+  TextEditingController nameofmed = new TextEditingController();
+  TextEditingController formulaofmed = new TextEditingController();
+  TextEditingController expiryofmed = new TextEditingController();
+  TextEditingController quantityofmed = new TextEditingController();
+  TextEditingController priceofmed = new TextEditingController();
+  TextEditingController discofmed = new TextEditingController();
+  double? _ratingValue;
+
   String _selectedGender = 'Negotiable';
   List<String> booktype_items = <String>[
     'Donation',
@@ -45,7 +53,6 @@ class _AddBookState extends State<AddBook> {
 
   @override
   Widget build(BuildContext context) {
-    double? _ratingValue;
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
 
@@ -100,6 +107,7 @@ class _AddBookState extends State<AddBook> {
                 Container(
                   height: h * 0.1,
                   child: TextField(
+                    controller: nameofmed,
                     style: TextStyle(color: Color(ColorCodes.font)),
                     maxLength: 30,
                     decoration: InputDecoration(
@@ -135,6 +143,7 @@ class _AddBookState extends State<AddBook> {
                 Container(
                   height: h * 0.1,
                   child: TextField(
+                    controller: formulaofmed,
                     style: TextStyle(color: Color(ColorCodes.font)),
                     maxLength: 30,
                     decoration: InputDecoration(
@@ -204,6 +213,7 @@ class _AddBookState extends State<AddBook> {
                 Container(
                   //height: h * 0.1,
                   child: TextField(
+                    controller: expiryofmed,
                     style: TextStyle(color: Color(ColorCodes.font)),
                     keyboardType: TextInputType.number,
                     maxLength: 30,
@@ -240,6 +250,7 @@ class _AddBookState extends State<AddBook> {
                 Container(
                   //height: h * 0.1,
                   child: TextField(
+                    controller: quantityofmed,
                     style: TextStyle(color: Color(ColorCodes.font)),
                     keyboardType: TextInputType.number,
                     maxLength: 30,
@@ -306,6 +317,7 @@ class _AddBookState extends State<AddBook> {
                             Container(
                               //height: h * 0.1,
                               child: TextField(
+                                controller: priceofmed,
                                 style: TextStyle(color: Color(ColorCodes.font)),
                                 keyboardType: TextInputType.number,
                                 maxLength: 30,
@@ -371,7 +383,7 @@ class _AddBookState extends State<AddBook> {
                     padding: EdgeInsets.only(left: 10),
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Medicine Discription',
+                      'Medicine Description',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color(ColorCodes.bg),
@@ -380,11 +392,12 @@ class _AddBookState extends State<AddBook> {
                 Container(
                   height: h * 0.2,
                   child: TextField(
+                    controller: discofmed,
                     style: TextStyle(color: Color(ColorCodes.font)),
                     maxLines: 6,
                     maxLength: 200,
                     decoration: InputDecoration(
-                      hintText: 'Mention discription of the medicine',
+                      hintText: 'Mention description of the medicine',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white70,
@@ -449,8 +462,15 @@ class _AddBookState extends State<AddBook> {
                               style: ElevatedButton.styleFrom(
                                   primary: Color(ColorCodes.bg)),
                               onPressed: () {
-                                APiMedicineHelper()
-                                    .addNewMedicine(Medicine.empty());
+                                Medicine medicine = Medicine.empty();
+                                medicine.name = nameofmed.text;
+                                medicine.formula = formulaofmed.text;
+                                medicine.condition = _ratingValue;
+                                medicine.expireDate = expiryofmed.text;
+                                medicine.qty = int.parse(quantityofmed.text);
+                                medicine.type = booktype_dropdownval;
+                                medicine.desc = discofmed.text;
+                                APiMedicineHelper().addNewMedicine(medicine);
                               },
                               child: Text('Submit')),
                         ),

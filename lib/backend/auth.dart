@@ -89,20 +89,6 @@ class AuthHelper {
     controller.isLoading(false);
   }
 
-  // void signInWithPhoneAuthCredential(
-  //     PhoneAuthCredential phoneAuthCredential) async {
-  //   try {
-  //     final AuthCredential =
-  //         await auth.signInWithCredential(phoneAuthCredential);
-  //     if (AuthCredential.user != null) {
-  //       Get.to(() => Home_Screen());
-  //       print('VERIFIED....................');
-  //     }
-  //   } on FirebaseAuthException catch (e) {
-  //     print(e);
-  //   }
-  // }
-
   //change med Status
   Future<bool> register({required Users user}) async {
     controller.isLoading(true);
