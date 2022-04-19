@@ -6,14 +6,22 @@ import '../conrollers/main_controller.dart';
 import '../viewsScreens/book_detail.dart';
 
 class DonationTabScreen extends StatefulWidget {
-  const DonationTabScreen({Key? key}) : super(key: key);
+  final controller = Get.find<MainController>();
+  String keyword;
+
+  DonationTabScreen({required this.keyword});
 
   @override
   State<DonationTabScreen> createState() => _DonationTabScreenState();
 }
 
 class _DonationTabScreenState extends State<DonationTabScreen> {
-  final controller = Get.find<MainController>();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _runFilter(widget.keyword);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +33,11 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
           color: Color(ColorCodes.bg),
           height: h * 0.45,
           child: Obx(
-            () => controller.isLoading.value
+            () => widget.controller.isLoading.value
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : controller.medicineListDonate.isEmpty
+                : widget.controller.medicineListDonate.isEmpty
                     ? Center(
                         child: Text(
                           'Empty',
@@ -38,8 +46,8 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
                       )
                     : GridView.count(
                         crossAxisCount: 2,
-                        children:
-                            controller.medicineListDonate.map((medicineItem) {
+                        children: widget.controller.medicineListDonatefound
+                            .map((medicineItem) {
                           return Center(
                             // child: Text(
                             //   'Item $index',
@@ -120,5 +128,26 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
         ),
       ),
     );
+  }
+
+  // This function is called whenever the text field changes
+  void _runFilter(String enteredKeyword) {
+    final controller = Get.find<MainController>();
+
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      controller.result_list_search = controller.medicineListDonate;
+    } else {
+      controller.result_list_search = controller.medicineListDonate
+          .where((user) =>
+              user.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+
+    // Refresh the UI
+    setState(() {
+      controller.medicineListDonatefound = controller.result_list_search;
+    });
   }
 }

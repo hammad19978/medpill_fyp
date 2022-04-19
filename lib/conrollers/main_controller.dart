@@ -11,6 +11,11 @@ class MainController extends GetxController {
   var medicineListDonate = <Medicine>[];
   var medicineListSale = <Medicine>[];
 
+  var medicineListDonatefound = <Medicine>[];
+  var medicineListListfound = <Medicine>[];
+
+  var result_list_search = <Medicine>[];
+
   @override
   void onInit() {
     super.onInit();

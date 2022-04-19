@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medpill_fyp/conrollers/main_controller.dart';
 import 'package:medpill_fyp/viewsScreens/profile.dart';
 import 'package:medpill_fyp/viewsScreens/request.dart';
 
@@ -21,12 +22,14 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen>
     with TickerProviderStateMixin {
+  var controller = Get.find<MainController>();
   int? _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    controller.medicineListDonatefound = controller.medicineListDonate;
     _page = 0;
   }
 
@@ -37,6 +40,7 @@ class _Home_ScreenState extends State<Home_Screen>
     TabController _controller = new TabController(length: 2, vsync: this);
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
+    TextEditingController _seachcontr = new TextEditingController();
 
     return Scaffold(
       key: scaffoldKey,
@@ -292,6 +296,8 @@ class _Home_ScreenState extends State<Home_Screen>
                             padding: EdgeInsets.only(left: 20),
                             width: w * 0.6,
                             child: TextField(
+                              controller: _seachcontr,
+                              decoration: InputDecoration(hintText: 'search'),
                               style: TextStyle(
                                   color: Color(ColorCodes.font),
                                   fontWeight: FontWeight.bold),
@@ -372,7 +378,8 @@ class _Home_ScreenState extends State<Home_Screen>
                             controller: _controller,
                             // <-- Your TabBarView
                             children: [
-                              DonationTabScreen(),
+                              DonationTabScreen(
+                                  keyword: _seachcontr.text.toString()),
                               SaleTabScreen(),
                             ],
                           ),

@@ -69,7 +69,7 @@ class _DonationTabScreenState extends State<SaleTabScreen> {
                                       width: 130,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        color: Colors.white,
+                                        color: Colors.white, //
                                       ),
                                       child: Align(
                                         alignment: Alignment.bottomCenter,
