@@ -1,19 +1,24 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:medpill_fyp/conrollers/main_controller.dart';
+import 'package:medpill_fyp/model/medicine.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../colorCode/colors.dart';
 
 class BookDetail extends StatefulWidget {
-  const BookDetail({Key? key}) : super(key: key);
+  //int index;
+  Medicine medobj = Medicine.empty();
 
   @override
   State<BookDetail> createState() => _BookDetailState();
+  BookDetail({required this.medobj});
 }
 
 class _BookDetailState extends State<BookDetail> {
+  final controller = Get.find<MainController>();
   final List<int> numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55];
   double? _ratingValue;
   @override
@@ -27,7 +32,7 @@ class _BookDetailState extends State<BookDetail> {
         ),
         backgroundColor: Color(ColorCodes.bg),
         title: Text(
-          "Medicine Detail",
+          'Medicine Detail',
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -74,7 +79,7 @@ class _BookDetailState extends State<BookDetail> {
                       alignment: Alignment.topLeft,
                       padding: EdgeInsets.all(20),
                       child: Text(
-                        "Azomax 500mg",
+                        widget.medobj.name.toUpperCase(),
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -84,7 +89,7 @@ class _BookDetailState extends State<BookDetail> {
                     alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      "Community acquired pneumonia: This medicine is used in the treatment of community-acquired pneumonia which is the most common type of lung ",
+                      widget.medobj.desc,
                       style: TextStyle(color: Colors.grey.shade400),
                     ),
                   ),
@@ -96,14 +101,14 @@ class _BookDetailState extends State<BookDetail> {
                 padding: EdgeInsets.only(left: 10),
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Medicine Condition",
+                  'Medicine Condition',
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                 )),
             Container(
               height: h * 0.1,
               child: RatingBar(
-                  initialRating: 2.5,
+                  initialRating: widget.medobj.condition!.toDouble(),
                   direction: Axis.horizontal,
                   allowHalfRating: true,
                   itemCount: 5,
@@ -131,7 +136,7 @@ class _BookDetailState extends State<BookDetail> {
                   bottomSheet();
                 },
                 child: Text(
-                  "Request for the Medicine",
+                  'Request for the Medicine',
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Color(ColorCodes.font),
@@ -186,7 +191,7 @@ class _BookDetailState extends State<BookDetail> {
                 child: TextField(
                   maxLines: 3,
                   decoration: InputDecoration(
-                      hintText: "Write a message...  (optional)"),
+                      hintText: 'Write a message...  (optional)'),
                 ),
               ),
               SizedBox(
@@ -199,7 +204,7 @@ class _BookDetailState extends State<BookDetail> {
                     requestSentSuccessfully();
                   },
                   child: Container(
-                      child: Text("Request Product",
+                      child: Text('Request Product',
                           style: TextStyle(color: Colors.white))),
                   color: Color(ColorCodes.font),
                 ),
@@ -217,7 +222,7 @@ class _BookDetailState extends State<BookDetail> {
       builder: (context) => Container(
         height: MediaQuery.of(context).size.height * 0.3,
         child: Center(
-          child: Text("Request sent Successfully",
+          child: Text('Request sent Successfully',
               style: TextStyle(color: Color(ColorCodes.font))),
         ),
       ),

@@ -21,31 +21,31 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
     var w = MediaQuery.of(context).size.width;
     return Container(
       child: SingleChildScrollView(
-        child: InkWell(
-          child: Container(
-            color: Color(ColorCodes.bg),
-            height: h * 0.45,
-            child: Obx(
-              () => controller.isLoading.value
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : controller.medicineListDonate.isEmpty
-                      ? Center(
-                          child: Text(
-                            'Empty',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      : GridView.count(
-                          crossAxisCount: 2,
-                          children:
-                              controller.medicineListDonate.map((medicineItem) {
-                            return Center(
-                              // child: Text(
-                              //   'Item $index',
-                              //   style: Theme.of(context).textTheme.headline5,
-                              // ),
+        child: Container(
+          color: Color(ColorCodes.bg),
+          height: h * 0.45,
+          child: Obx(
+            () => controller.isLoading.value
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : controller.medicineListDonate.isEmpty
+                    ? Center(
+                        child: Text(
+                          'Empty',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    : GridView.count(
+                        crossAxisCount: 2,
+                        children:
+                            controller.medicineListDonate.map((medicineItem) {
+                          return Center(
+                            // child: Text(
+                            //   'Item $index',
+                            //   style: Theme.of(context).textTheme.headline5,
+                            // ),
+                            child: InkWell(
                               child: Container(
                                 decoration: BoxDecoration(
                                   boxShadow: [
@@ -110,12 +110,13 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
                                   ],
                                 ),
                               ),
-                            );
-                          }).toList(),
-                        ),
-            ),
+                              onTap: () =>
+                                  Get.to(BookDetail(medobj: medicineItem)),
+                            ),
+                          );
+                        }).toList(),
+                      ),
           ),
-          onTap: () => Get.to(BookDetail()),
         ),
       ),
     );

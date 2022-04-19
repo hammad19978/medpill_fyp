@@ -330,7 +330,6 @@ class _Home_ScreenState extends State<Home_Screen>
                 ),
               ),
             ),
-
             Container(
               height: h * 0.5,
               color: Colors.yellow,
@@ -382,26 +381,6 @@ class _Home_ScreenState extends State<Home_Screen>
                     ),
                   )),
             ),
-
-            // Container(
-            //   color: Colors.blueAccent,
-            //   child: Center(
-            //     child: Column(
-            //       children: <Widget>[
-            //         Text(_page.toString(), textScaleFactor: 10.0),
-            //         RaisedButton(
-            //           child: Text('Go To Page of index 1'),
-            //           onPressed: () {
-            //             // //Page change using state does the same as clicking index 1 navigation button
-            //             // final State<StatefulWidget>? navBarState =
-            //             //     _bottomNavigationKey.currentState;
-            //             // navBarState?.setPage(1);
-            //           },
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
