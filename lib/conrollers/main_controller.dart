@@ -1,6 +1,7 @@
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:medpill_fyp/model/medicine.dart';
+import 'package:medpill_fyp/model/request.dart';
 import 'package:medpill_fyp/model/users.dart';
 
 import '../backend/helper.dart';
@@ -15,6 +16,8 @@ class MainController extends GetxController {
 
   var medicineListDonate = <Medicine>[];
   var medicineListSale = <Medicine>[];
+
+  var requestListAdmin = List<Request>.empty(growable: true).obs;
 
   var fetchinguserlist = <Users>[];
 

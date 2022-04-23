@@ -81,7 +81,7 @@ class RegisterationScreen extends StatelessWidget {
                                 Users user = Users.empty();
                                 user.name = nameController.text;
                                 user.cnic = cnicController.text;
-                                user.phone = phoneController.text;
+                                user.phone = phoneController.text.trimRight();
                                 user.email = emailController.text;
                                 user.password = passController.text;
                                 if (!(await AuthHelper()

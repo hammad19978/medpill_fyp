@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:medpill_fyp/admin/admin_home.dart';
 import 'package:medpill_fyp/backend/helper.dart';
 import 'package:medpill_fyp/model/users.dart';
 import 'package:medpill_fyp/viewsScreens/home_screen.dart';
@@ -119,7 +120,12 @@ class AuthHelper {
       ;
       controller.userData(Users.fromMap(dbData.docs.first.data()));
       showToast('Welcome!');
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString('user', controller.userData.toJson());
       controller.isLoading(false);
+      controller.isAdmin.value
+          ? Get.offAll(() => AdminHomeScreen())
+          : Get.offAll(() => Home_Screen());
       return true;
     } catch (e) {}
     controller.isLoading(false);

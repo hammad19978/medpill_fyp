@@ -99,7 +99,7 @@ class VerificationOTP extends StatelessWidget {
                             onPressed: () {
                               if (!formKey.currentState!.validate()) return;
                               AuthHelper().login(
-                                phone: phonenumcontroller.text,
+                                phone: phonenumcontroller.text.trimRight(),
                                 pass: passwordControllre.text,
                               );
                             },

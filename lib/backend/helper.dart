@@ -20,6 +20,39 @@ class APiMedicineHelper {
   ///////////////////////////////////////////
   ///
   ///                 Request
+  // get allRequested  med
+  Future<void> fetchallRequests() async {
+    controller.isLoading(true);
+    final data = await FirebaseFirestore.instance
+        .collection(tabelRequest)
+        .where('status', isNotEqualTo: 'request')
+        .get();
+
+    data.docs.forEach((element) {
+      Request request = Request.fromMap(element.data());
+      request.refrenceID = element.reference.id;
+      controller.requestListAdmin.add(request);
+    });
+    controller.isLoading(false);
+  }
+
+  //updateRequet Status
+  Future<void> updateRequestStatus(Request request) async {
+    controller.isLoading(true);
+    try {
+      await FirebaseFirestore.instance
+          .collection(tabelRequest)
+          .doc(request.refrenceID)
+          .update(request.toMap());
+      controller.requestListAdmin.refresh();
+      showToast('Status Updated');
+    } catch (e) {
+      showToast('Status Error');
+    }
+
+    controller.isLoading(false);
+  }
+
   ///
   Future<void> requestAMedicine(Request request) async {
     controller.isLoading(true);
@@ -84,16 +117,18 @@ class APiMedicineHelper {
 
   //get user by specific medicine
   Future<void> fetchUser(String phoneno) async {
-    print('$phoneno' + '123456789');
+    print('$phoneno : ' + '123456789');
     controller.isLoading(true);
-    final data = await FirebaseFirestore.instance
-        .collection(user)
-        .where('phone', isEqualTo: '$phoneno')
-        .get();
+    try {
+      final data = await FirebaseFirestore.instance
+          .collection(user)
+          .where('phone', isEqualTo: '$phoneno')
+          .get();
 
-    data.docs.forEach((element) {
-      controller.fetchinguserlist.add(Users.fromMap(element.data()));
-    });
+      data.docs.forEach((element) {
+        controller.fetchinguserlist.add(Users.fromMap(element.data()));
+      });
+    } catch (e) {}
     controller.isLoading(false);
   }
 }

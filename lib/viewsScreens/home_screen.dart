@@ -118,7 +118,7 @@ class _Home_ScreenState extends State<Home_Screen>
               title: Text('My Uploads',
                   style: TextStyle(color: Color(ColorCodes.bg))),
               onTap: () {
-                Get.to(MyUpload());
+                Get.to(() => MyUpload());
               },
             ),
             ListTile(
@@ -126,7 +126,7 @@ class _Home_ScreenState extends State<Home_Screen>
               title: Text('My Requests',
                   style: TextStyle(color: Color(ColorCodes.bg))),
               onTap: () {
-                Get.to(RequestScreen());
+                Get.to(() => RequestScreen());
               },
             ),
             ListTile(
@@ -135,7 +135,7 @@ class _Home_ScreenState extends State<Home_Screen>
               title: Text('Contact Us',
                   style: TextStyle(color: Color(ColorCodes.bg))),
               onTap: () {
-                Get.to(ContactUs());
+                Get.to(() => ContactUs());
               },
             ),
             ListTile(
@@ -146,7 +146,7 @@ class _Home_ScreenState extends State<Home_Screen>
                 style: TextStyle(color: Color(ColorCodes.bg)),
               ),
               onTap: () {
-                Get.to(PrivacyPolicy());
+                Get.to(() => PrivacyPolicy());
               },
             ),
             ListTile(
@@ -156,9 +156,7 @@ class _Home_ScreenState extends State<Home_Screen>
                 'Help Center',
                 style: TextStyle(color: Color(ColorCodes.bg)),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.share_outlined, color: Color(ColorCodes.bg)),
@@ -166,9 +164,7 @@ class _Home_ScreenState extends State<Home_Screen>
                 'Share App',
                 style: TextStyle(color: Color(ColorCodes.bg)),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.logout_outlined, color: Color(ColorCodes.bg)),

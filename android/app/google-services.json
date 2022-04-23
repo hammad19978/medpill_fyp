@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1073219977580:android:e6c09edee6e0cc7dceb349",
+        "mobilesdk_app_id": "1:1073219977580:android:339c8e600a0af96aceb349",
         "android_client_info": {
-          "package_name": "com.example.medpill_fyp"
+          "package_name": "com.pro.medpill_fyp"
         }
       },
       "oauth_client": [

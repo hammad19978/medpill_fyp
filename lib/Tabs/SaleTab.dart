@@ -110,8 +110,8 @@ class _DonationTabScreenState extends State<SaleTabScreen> {
                                   ],
                                 ),
                               ),
-                              onTap: () =>
-                                  Get.to(BookDetail(medobj: medicineItem)),
+                              onTap: () => Get.to(
+                                  () => BookDetail(medobj: medicineItem)),
                             ),
                           );
                         }).toList(),

@@ -1,42 +1,47 @@
 class Request {
-  String byPhone;
-  String toPhone;
-  bool isApproved;
+  Map<String, dynamic> byPhone;
+  Map<String, dynamic> toPhone;
+  String status;
   String mesaage;
-  String medicineID;
-  Request({
-    required this.byPhone,
-    required this.toPhone,
-    required this.isApproved,
-    required this.mesaage,
-    required this.medicineID,
-  });
+  Map<String, dynamic> medicineID;
+  String refrenceID = '';
+
+  Request(
+      {required this.byPhone,
+      required this.toPhone,
+      required this.status,
+      required this.mesaage,
+      required this.medicineID,
+      required this.refrenceID});
 
   Request.empty({
-    this.byPhone = '',
-    this.toPhone = '',
-    this.isApproved = false,
+    this.byPhone = const {},
+    this.toPhone = const {},
+    this.status = '',
     this.mesaage = '',
-    this.medicineID = '',
+    this.medicineID = const {},
+    this.refrenceID = '',
   });
 
   Map<String, dynamic> toMap() {
     return {
       'byPhone': byPhone,
       'toPhone': toPhone,
-      'isApproved': isApproved,
+      'status': status,
       'mesaage': mesaage,
       'medicineID': medicineID,
+      'refrenceID': refrenceID,
     };
   }
 
   factory Request.fromMap(Map<String, dynamic> map) {
     return Request(
-      byPhone: map['byPhone'] ?? '',
-      toPhone: map['toPhone'] ?? '',
-      isApproved: map['isApproved'] ?? false,
+      byPhone: Map<String, dynamic>.from(map['byPhone']),
+      toPhone: Map<String, dynamic>.from(map['toPhone']),
+      status: map['status'] ?? '',
       mesaage: map['mesaage'] ?? '',
-      medicineID: map['medicineID'] ?? '',
+      medicineID: Map<String, dynamic>.from(map['medicineID']),
+      refrenceID: map['refrenceID'] ?? '',
     );
   }
 }
