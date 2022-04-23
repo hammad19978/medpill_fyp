@@ -22,12 +22,13 @@ class APiMedicineHelper {
   ///                 Request
   // get allRequested  med
   Future<void> fetchallRequests() async {
+    controller.requestListAdmin.clear();
     controller.isLoading(true);
+
     final data = await FirebaseFirestore.instance
         .collection(tabelRequest)
-        .where('status', isNotEqualTo: 'request')
+        .where('status', isEqualTo: 'request')
         .get();
-
     data.docs.forEach((element) {
       Request request = Request.fromMap(element.data());
       request.refrenceID = element.reference.id;
@@ -36,9 +37,29 @@ class APiMedicineHelper {
     controller.isLoading(false);
   }
 
+  // get allRequestedAccepted  med
+  Future<void> fetchallAcceptedRequests() async {
+    controller.requestListAdmin.clear();
+    controller.isLoading(true);
+
+    try {
+      final data = await FirebaseFirestore.instance
+          .collection(tabelRequest)
+          .where('status', isEqualTo: 'accept')
+          .get();
+
+      data.docs.forEach((element) {
+        Request request = Request.fromMap(element.data());
+        request.refrenceID = element.reference.id;
+        controller.requestListAdmin.add(request);
+      });
+    } catch (e) {}
+    controller.isLoading(false);
+  }
+
   //updateRequet Status
   Future<void> updateRequestStatus(Request request) async {
-    controller.isLoading(true);
+    controller.isStatusLoading(true);
     try {
       await FirebaseFirestore.instance
           .collection(tabelRequest)
@@ -50,7 +71,7 @@ class APiMedicineHelper {
       showToast('Status Error');
     }
 
-    controller.isLoading(false);
+    controller.isStatusLoading(false);
   }
 
   ///

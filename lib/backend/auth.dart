@@ -32,7 +32,7 @@ class AuthHelper {
         AuthHelper.user = Users.fromMap(db.docs.first.data());
 
         await fetchOTP(phone: phone);
-        controller.isOtpSend(true);
+        // controller.isOtpSend(true);
       } else {
         showToast('User Not Found');
       }
@@ -123,9 +123,12 @@ class AuthHelper {
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString('user', controller.userData.toJson());
       controller.isLoading(false);
-      controller.isAdmin.value
-          ? Get.offAll(() => AdminHomeScreen())
-          : Get.offAll(() => Home_Screen());
+      if (controller.isAdmin.value) {
+        preferences.setBool('isAdmin', true);
+
+        Get.offAll(() => AdminHomeScreen());
+      } else
+        Get.offAll(() => Home_Screen());
       return true;
     } catch (e) {}
     controller.isLoading(false);

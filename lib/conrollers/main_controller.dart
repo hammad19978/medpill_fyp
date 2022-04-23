@@ -8,7 +8,7 @@ import '../backend/helper.dart';
 
 class MainController extends GetxController {
   var isLoading = false.obs;
-  var isOtpSend = false.obs;
+  var isStatusLoading = false.obs;
 
   var isAdmin = false.obs;
 
@@ -17,7 +17,7 @@ class MainController extends GetxController {
   var medicineListDonate = <Medicine>[];
   var medicineListSale = <Medicine>[];
 
-  var requestListAdmin = List<Request>.empty(growable: true).obs;
+  var requestListAdmin = <Request>[].obs;
 
   var fetchinguserlist = <Users>[];
 
