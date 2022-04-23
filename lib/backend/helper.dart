@@ -2,15 +2,38 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medpill_fyp/model/medicine.dart';
+import 'package:medpill_fyp/model/request.dart';
+import 'package:medpill_fyp/model/users.dart';
 
 import '../conrollers/main_controller.dart';
 
 class APiMedicineHelper {
   static String tabelMedicien = 'medicines';
+  static String tabelRequest = 'request';
+
+  static String user = 'users';
 
   APiMedicineHelper() {
     controller = Get.find<MainController>();
   }
+
+  ///////////////////////////////////////////
+  ///
+  ///                 Request
+  ///
+  Future<void> requestAMedicine(Request request) async {
+    controller.isLoading(true);
+    try {
+      await FirebaseFirestore.instance
+          .collection(tabelRequest)
+          .add(request.toMap());
+      showToast('Request SuccessFully!');
+    } catch (e) {
+      showToast('Error Occur!');
+    }
+    controller.isLoading(false);
+  }
+  //////////////////////////////////////////
 
   late final MainController controller;
   // get all med
@@ -59,11 +82,20 @@ class APiMedicineHelper {
     controller.isLoading(false);
   }
 
-  //request for med
-  requestForMedicine() {}
+  //get user by specific medicine
+  Future<void> fetchUser(String phoneno) async {
+    print('$phoneno' + '123456789');
+    controller.isLoading(true);
+    final data = await FirebaseFirestore.instance
+        .collection(user)
+        .where('phone', isEqualTo: '$phoneno')
+        .get();
 
-  //change med Status
-  updateRequestedStatusOfMed() {}
+    data.docs.forEach((element) {
+      controller.fetchinguserlist.add(Users.fromMap(element.data()));
+    });
+    controller.isLoading(false);
+  }
 }
 
 showToast(msg) {

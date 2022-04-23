@@ -13,11 +13,12 @@ class RegisterationScreen extends StatelessWidget {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController cnicController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
 
   final controller = Get.find<MainController>();
+  final formKey = GlobalKey<FormState>();
 
   @override
-  final formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
@@ -35,29 +36,36 @@ class RegisterationScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                getFields(
+                CustomTextField(
                   h: h,
                   label: 'Name',
                   hint: 'Mention Name of yourself please',
                   controller: nameController,
                 ),
-                getFields(
+                CustomTextField(
                   h: h,
                   label: 'Phone',
                   hint: 'Mention Phone No which you keep in mobile please',
                   controller: phoneController,
                 ),
-                getFields(
+                CustomTextField(
                   h: h,
                   label: 'CNIC',
                   hint: 'Mention Cnic of yourself please',
                   controller: cnicController,
                 ),
-                getFields(
+                CustomTextField(
                   h: h,
                   label: 'Email',
                   hint: 'Mention Email of yourself please',
                   controller: emailController,
+                ),
+                CustomTextField(
+                  h: h,
+                  label: 'Password',
+                  hint: 'Enter Your Password',
+                  controller: passController,
+                  isPass: true,
                 ),
                 SizedBox(height: 40),
                 Obx(
@@ -75,6 +83,7 @@ class RegisterationScreen extends StatelessWidget {
                                 user.cnic = cnicController.text;
                                 user.phone = phoneController.text;
                                 user.email = emailController.text;
+                                user.password = passController.text;
                                 if (!(await AuthHelper()
                                     .register(user: user))) {
                                   //toast;

@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medpill_fyp/Splash.dart';
 import 'package:medpill_fyp/conrollers/main_controller.dart';
-import 'package:medpill_fyp/viewsScreens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: AllBindings(),
       title: 'App',
-      home: Home_Screen(),
+      home: Splash(),
       debugShowCheckedModeBanner: false,
     );
   }

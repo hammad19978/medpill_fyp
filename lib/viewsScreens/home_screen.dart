@@ -4,12 +4,17 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medpill_fyp/conrollers/main_controller.dart';
+import 'package:medpill_fyp/contactUs.dart';
+import 'package:medpill_fyp/model/users.dart';
+import 'package:medpill_fyp/verificationOTP.dart';
 import 'package:medpill_fyp/viewsScreens/profile.dart';
 import 'package:medpill_fyp/viewsScreens/request.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Tabs/DonationTab.dart';
 import '../Tabs/SaleTab.dart';
 import '../colorCode/colors.dart';
+import '../privacy_policy.dart';
 import 'addMedicine.dart';
 import 'myupload.dart';
 
@@ -121,7 +126,7 @@ class _Home_ScreenState extends State<Home_Screen>
               title: Text('My Requests',
                   style: TextStyle(color: Color(ColorCodes.bg))),
               onTap: () {
-                Get.to(Request());
+                Get.to(RequestScreen());
               },
             ),
             ListTile(
@@ -130,7 +135,7 @@ class _Home_ScreenState extends State<Home_Screen>
               title: Text('Contact Us',
                   style: TextStyle(color: Color(ColorCodes.bg))),
               onTap: () {
-                Navigator.pop(context);
+                Get.to(ContactUs());
               },
             ),
             ListTile(
@@ -141,7 +146,7 @@ class _Home_ScreenState extends State<Home_Screen>
                 style: TextStyle(color: Color(ColorCodes.bg)),
               ),
               onTap: () {
-                Navigator.pop(context);
+                Get.to(PrivacyPolicy());
               },
             ),
             ListTile(
@@ -171,8 +176,12 @@ class _Home_ScreenState extends State<Home_Screen>
                 'Logout',
                 style: TextStyle(color: Color(ColorCodes.bg)),
               ),
-              onTap: () {
-                Navigator.pop(context);
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.remove('user');
+                prefs.clear();
+                controller.userData(Users.empty());
+                Get.offAll(() => VerificationOTP());
               },
             ),
           ],

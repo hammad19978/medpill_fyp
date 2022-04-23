@@ -10,6 +10,8 @@ import '../conrollers/main_controller.dart';
 
 class AuthHelper {
   static String tabelUsers = 'users';
+  static String tableAdmin = 'admin';
+
   FirebaseAuth auth = FirebaseAuth.instance;
   static String verificationid = '';
   static Users user = Users.empty();
@@ -89,13 +91,35 @@ class AuthHelper {
     controller.isLoading(false);
   }
 
-  //change med Status
   Future<bool> register({required Users user}) async {
     controller.isLoading(true);
     try {
       await FirebaseFirestore.instance.collection(tabelUsers).add(user.toMap());
       controller.isLoading(false);
       Get.back();
+      return true;
+    } catch (e) {}
+    controller.isLoading(false);
+    return false;
+  }
+
+  Future<bool> login({required phone, required pass}) async {
+    controller.isLoading(true);
+    try {
+      final dbData = await FirebaseFirestore.instance
+          .collection(controller.isAdmin.value ? tableAdmin : tabelUsers)
+          .where('phone', isEqualTo: phone)
+          .where('password', isEqualTo: pass)
+          .get();
+      if (dbData.docs.isEmpty) {
+        controller.isLoading(false);
+        showToast('User Not Found!');
+        return true;
+      }
+      ;
+      controller.userData(Users.fromMap(dbData.docs.first.data()));
+      showToast('Welcome!');
+      controller.isLoading(false);
       return true;
     } catch (e) {}
     controller.isLoading(false);

@@ -6,6 +6,7 @@ class Medicine {
   int qty;
   String type;
   String desc;
+  String uPhoneno;
   List<String> imgs;
 
   //construtor
@@ -18,6 +19,7 @@ class Medicine {
     required this.type,
     required this.desc,
     required this.imgs,
+    required this.uPhoneno,
   });
   Medicine.empty({
     this.name = '',
@@ -27,6 +29,7 @@ class Medicine {
     this.qty = 0,
     this.type = '',
     this.desc = '',
+    this.uPhoneno = '',
     this.imgs = const [],
   });
 
@@ -39,6 +42,7 @@ class Medicine {
       'qty': qty,
       'type': type,
       'desc': desc,
+      'uPhoneno': uPhoneno,
       'imgs': imgs,
     };
   }
@@ -47,12 +51,13 @@ class Medicine {
     return Medicine(
       name: map['name'] ?? '',
       formula: map['formula'] ?? '',
-      condition: map['condition']?.toDouble() ?? 0.0,
+      condition: map['condition']?.toDouble(),
       expireDate: map['expireDate'] ?? '',
       qty: map['qty']?.toInt() ?? 0,
       type: map['type'] ?? '',
       desc: map['desc'] ?? '',
-      imgs: List<String>.from(map['imgs'] ?? []),
+      uPhoneno: map['uPhoneno'] ?? '',
+      imgs: List<String>.from(map['imgs']),
     );
   }
 }

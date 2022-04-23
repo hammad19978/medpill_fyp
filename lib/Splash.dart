@@ -1,5 +1,4 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medpill_fyp/verificationOTP.dart';
@@ -15,7 +14,6 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
   Future checkFirstSeen() async {
-    await Firebase.initializeApp();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = prefs.containsKey('user');
     // Get.to(() => Home_Screen());

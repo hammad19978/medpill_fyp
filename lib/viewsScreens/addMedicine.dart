@@ -470,6 +470,8 @@ class _AddBookState extends State<AddBook> {
                                 medicine.qty = int.parse(quantityofmed.text);
                                 medicine.type = booktype_dropdownval;
                                 medicine.desc = discofmed.text;
+                                medicine.uPhoneno =
+                                    controller.userData.value.phone;
                                 APiMedicineHelper().addNewMedicine(medicine);
                               },
                               child: Text('Submit')),

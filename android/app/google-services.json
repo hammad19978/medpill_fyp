@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "377913524863",
-    "project_id": "medpill-10788",
-    "storage_bucket": "medpill-10788.appspot.com"
+    "project_number": "1073219977580",
+    "project_id": "medpill-26293",
+    "storage_bucket": "medpill-26293.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:377913524863:android:4afc2343d8dc611bfeb54a",
+        "mobilesdk_app_id": "1:1073219977580:android:e6c09edee6e0cc7dceb349",
         "android_client_info": {
           "package_name": "com.example.medpill_fyp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "377913524863-0io37afi29pdcku87d26snfomtum52cj.apps.googleusercontent.com",
+          "client_id": "1073219977580-a2tnn6mpnu6don2i0q5po2tl8vvvi289.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCWrmIkKD6bcceIt_Hl4hQ5fPUlzf3LP8U"
+          "current_key": "AIzaSyBeYeiC6zRCpmjcmtF-OZuVOGDm6K-wafw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "377913524863-0io37afi29pdcku87d26snfomtum52cj.apps.googleusercontent.com",
+              "client_id": "1073219977580-a2tnn6mpnu6don2i0q5po2tl8vvvi289.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

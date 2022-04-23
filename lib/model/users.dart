@@ -5,6 +5,7 @@ class Users {
   String phone;
   String email;
   String cnic;
+  String password;
 
   ///
   Users({
@@ -12,6 +13,7 @@ class Users {
     required this.phone,
     required this.email,
     required this.cnic,
+    required this.password,
   });
 
   Users.empty({
@@ -19,6 +21,7 @@ class Users {
     this.phone = '',
     this.email = '',
     this.cnic = '',
+    this.password = '',
   });
 
   Map<String, dynamic> toMap() {
@@ -27,6 +30,7 @@ class Users {
       'phone': phone,
       'email': email,
       'cnic': cnic,
+      'password': password,
     };
   }
 
@@ -36,6 +40,7 @@ class Users {
       phone: map['phone'] ?? '',
       email: map['email'] ?? '',
       cnic: map['cnic'] ?? '',
+      password: map['password'] ?? '',
     );
   }
 

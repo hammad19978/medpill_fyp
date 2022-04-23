@@ -20,7 +20,7 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _runFilter(widget.keyword);
+    //_runFilter(widget.keyword);
   }
 
   @override
@@ -49,10 +49,6 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
                         children: widget.controller.medicineListDonatefound
                             .map((medicineItem) {
                           return Center(
-                            // child: Text(
-                            //   'Item $index',
-                            //   style: Theme.of(context).textTheme.headline5,
-                            // ),
                             child: InkWell(
                               child: Container(
                                 decoration: BoxDecoration(

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:medpill_fyp/backend/helper.dart';
 import 'package:medpill_fyp/conrollers/main_controller.dart';
 import 'package:medpill_fyp/model/medicine.dart';
+import 'package:medpill_fyp/model/request.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../colorCode/colors.dart';
@@ -21,10 +23,17 @@ class _BookDetailState extends State<BookDetail> {
   final controller = Get.find<MainController>();
   final List<int> numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55];
   double? _ratingValue;
+  var phoneno;
+
+  TextEditingController messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
+    phoneno = widget.medobj.uPhoneno;
+    APiMedicineHelper().fetchUser(phoneno);
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -89,7 +98,7 @@ class _BookDetailState extends State<BookDetail> {
                     alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      widget.medobj.desc,
+                      widget.medobj.desc + '    ' + phoneno.toString(),
                       style: TextStyle(color: Colors.grey.shade400),
                     ),
                   ),
@@ -190,6 +199,7 @@ class _BookDetailState extends State<BookDetail> {
                 ),
                 child: TextField(
                   maxLines: 3,
+                  controller: messageController,
                   decoration: InputDecoration(
                       hintText: 'Write a message...  (optional)'),
                 ),
@@ -201,7 +211,15 @@ class _BookDetailState extends State<BookDetail> {
                 alignment: Alignment.bottomCenter,
                 child: RaisedButton(
                   onPressed: () {
-                    requestSentSuccessfully();
+                    Request request = Request.empty();
+                    request.byPhone =
+                        controller.userData.value.phone; // login wala
+                    request.toPhone = widget.medobj.uPhoneno;
+                    request.medicineID = widget.medobj.name;
+                    request.isApproved = false;
+                    request.mesaage = messageController.text;
+
+                    APiMedicineHelper().requestAMedicine(request);
                   },
                   child: Container(
                       child: Text('Request Product',
@@ -211,19 +229,6 @@ class _BookDetailState extends State<BookDetail> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  requestSentSuccessfully() {
-    showMaterialModalBottomSheet(
-      context: context,
-      builder: (context) => Container(
-        height: MediaQuery.of(context).size.height * 0.3,
-        child: Center(
-          child: Text('Request sent Successfully',
-              style: TextStyle(color: Color(ColorCodes.font))),
         ),
       ),
     );
