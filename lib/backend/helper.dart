@@ -138,7 +138,6 @@ class APiMedicineHelper {
 
   //get user by specific medicine
   Future<void> fetchUser(String phoneno) async {
-    print('$phoneno : ' + '123456789');
     controller.isLoading(true);
     try {
       final data = await FirebaseFirestore.instance

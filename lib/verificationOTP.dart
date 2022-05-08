@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medpill_fyp/colorCode/colors.dart';
 import 'package:medpill_fyp/common/custom_field.dart';
 
 import 'Register.dart';
@@ -39,7 +40,6 @@ class VerificationOTP extends StatelessWidget {
                     hint: 'Enter Your Phone Number',
                     h: h,
                   ),
-
                   CustomTextField(
                     controller: passwordControllre,
                     label: 'Password',
@@ -47,13 +47,11 @@ class VerificationOTP extends StatelessWidget {
                     h: h,
                     isPass: true,
                   ),
-
                   SizedBox(height: 10),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text('As User'),
+                      Text('Are You Admin?'),
                       SizedBox(width: 5),
                       Obx(
                         () => Switch(
@@ -62,36 +60,8 @@ class VerificationOTP extends StatelessWidget {
                               controller.isAdmin(onChanged),
                         ),
                       ),
-                      SizedBox(width: 5),
-                      Text('As Admin'),
                     ],
                   ),
-
-                  // Obx(
-                  //   () => !controller.isOtpSend.value
-                  //       ? Text('')
-                  //       : CustomTextField(
-                  //           controller: otpcontroller,
-                  //           label: 'OTP',
-                  //           hint: 'Enter Your OTP',
-                  //           h: h,
-                  //         ),
-                  // ),
-                  // Obx(
-                  //   () => controller.isLoading.value &&
-                  //           !controller.isOtpSend.value
-                  //       ? CircularProgressIndicator()
-                  //       : !controller.isOtpSend.value
-                  //           ? TextButton(
-                  //               onPressed: () async {
-                  //                 if (!formKey.currentState!.validate()) return;
-                  //                 await AuthHelper()
-                  //                     .sendOTP(phone: phonenumcontroller.text);
-                  //               },
-                  //               child: Text('Fetch OTP'),
-                  //             )
-                  //           : Text(''),
-                  // ),
                   Obx(
                     () => controller.isLoading.value
                         ? CircularProgressIndicator()
@@ -105,16 +75,26 @@ class VerificationOTP extends StatelessWidget {
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Login',
-                                style: TextStyle(fontSize: 18),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(ColorCodes.bg),
+                                ),
+                                height: 40,
+                                width: 80,
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(
+                                        fontSize: 18, color: Colors.white),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                   ),
                   InkWell(
                     onTap: () {
-                      // controller.isOtpSend(false);
                       !controller.isLoading.value
                           ? Get.to(() => RegisterationScreen())
                           : null;

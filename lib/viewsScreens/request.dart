@@ -21,6 +21,11 @@ class RequestScreen extends StatefulWidget {
 }
 
 class _RequestScreenState extends State<RequestScreen> {
+  // static String ucnic = '';
+  // static String uname = '';
+  // static String uphone = '';
+  // static String uemail = '';
+
   final controller = Get.find<MainController>();
   @override
   Widget build(BuildContext context) {
@@ -50,8 +55,13 @@ class _RequestScreenState extends State<RequestScreen> {
                       final item = controller.requestListAdmin[index];
                       final byUser = Users.fromMap(item.byPhone);
                       final toUser = Users.fromMap(item.toPhone);
+                      // ucnic = byUser.cnic;
+                      // uphone = byUser.phone;
+                      // uname = byUser.name;
+                      // uemail = byUser.email;
+
                       final medicine = Medicine.fromMap(item.medicineID);
-                      if (toUser.phone == controller.userData.value.phone)
+                      if (medicine.uPhoneno == controller.userData.value.phone)
                         return Container(
                           padding: EdgeInsets.all(10),
                           child: Container(

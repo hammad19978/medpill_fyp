@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:medpill_fyp/colorCode/colors.dart';
+import 'package:medpill_fyp/viewsScreens/home_screen.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({Key? key}) : super(key: key);
@@ -62,7 +64,9 @@ class ContactUs extends StatelessWidget {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Color(ColorCodes.bg)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.offAll(Home_Screen());
+                        },
                         child: Text('DROP')),
                   ),
                 ],

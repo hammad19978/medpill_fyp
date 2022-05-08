@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -415,41 +413,41 @@ class _AddBookState extends State<AddBook> {
                     ),
                   ),
                 ),
-                Container(
-                  //padding: EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      //open button ----------------
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary: Color(ColorCodes.bg)),
-                            onPressed: () {
-                              openImages();
-                            },
-                            child: Text('Open Images')),
-                      ),
+                // Container(
+                //   //padding: EdgeInsets.all(20),
+                //   child: Column(
+                //     children: [
+                //       //open button ----------------
+                //       Align(
+                //         alignment: Alignment.topLeft,
+                //         child: ElevatedButton(
+                //             style: ElevatedButton.styleFrom(
+                //                 primary: Color(ColorCodes.bg)),
+                //             onPressed: () {
+                //               openImages();
+                //             },
+                //             child: Text('Open Images')),
+                //       ),
 
-                      Divider(),
+                //       Divider(),
 
-                      imagefiles != null
-                          ? Wrap(
-                              children: imagefiles!.map((imageone) {
-                                return Container(
-                                    child: Card(
-                                  child: Container(
-                                    height: h * 0.1,
-                                    width: w * 0.1,
-                                    child: Image.file(File(imageone.path)),
-                                  ),
-                                ));
-                              }).toList(),
-                            )
-                          : Container()
-                    ],
-                  ),
-                ),
+                //       imagefiles != null
+                //           ? Wrap(
+                //               children: imagefiles!.map((imageone) {
+                //                 return Container(
+                //                     child: Card(
+                //                   child: Container(
+                //                     height: h * 0.1,
+                //                     width: w * 0.1,
+                //                     child: Image.file(File(imageone.path)),
+                //                   ),
+                //                 ));
+                //               }).toList(),
+                //             )
+                //           : Container()
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: 20,
                 ),

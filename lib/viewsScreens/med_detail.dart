@@ -108,7 +108,7 @@ class _BookDetailState extends State<BookDetail> {
                       alignment: Alignment.topLeft,
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        widget.medobj.desc + '    ' + phoneno.toString(),
+                        widget.medobj.desc,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                     ),
@@ -173,34 +173,34 @@ class _BookDetailState extends State<BookDetail> {
       context: context,
       bounce: true,
       builder: (context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.all(30),
         height: MediaQuery.of(context).size.height * 0.4,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 24.0),
-                height: MediaQuery.of(context).size.height * 0.2,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: numbers.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: Card(
-                          color: Colors.blue,
-                          child: Container(
-                            child: Center(
-                                child: Text(
-                              numbers[index].toString(),
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 36.0),
-                            )),
-                          ),
-                        ),
-                      );
-                    }),
-              ),
+              // Container(
+              //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 24.0),
+              //   height: MediaQuery.of(context).size.height * 0.2,
+              //   child: ListView.builder(
+              //       scrollDirection: Axis.horizontal,
+              //       itemCount: numbers.length,
+              //       itemBuilder: (context, index) {
+              //         return Container(
+              //           width: MediaQuery.of(context).size.width * 0.3,
+              //           child: Card(
+              //             color: Colors.blue,
+              //             child: Container(
+              //               child: Center(
+              //                   child: Text(
+              //                 numbers[index].toString(),
+              //                 style: TextStyle(
+              //                     color: Colors.white, fontSize: 36.0),
+              //               )),
+              //             ),
+              //           ),
+              //         );
+              //       }),
+              // ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(

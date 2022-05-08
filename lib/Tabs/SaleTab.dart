@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../colorCode/colors.dart';
 import '../conrollers/main_controller.dart';
-import '../viewsScreens/book_detail.dart';
+import '../viewsScreens/med_detail.dart';
 
 class SaleTabScreen extends StatefulWidget {
   const SaleTabScreen({Key? key}) : super(key: key);
@@ -75,7 +75,7 @@ class _DonationTabScreenState extends State<SaleTabScreen> {
                                         alignment: Alignment.bottomCenter,
                                         child: Container(
                                           padding: EdgeInsets.only(
-                                              bottom: 25, right: 20),
+                                              bottom: 25, right: 5),
                                           child: Text(
                                             medicineItem.name,
                                             style: TextStyle(

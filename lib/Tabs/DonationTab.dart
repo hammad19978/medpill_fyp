@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../colorCode/colors.dart';
 import '../conrollers/main_controller.dart';
-import '../viewsScreens/book_detail.dart';
+import '../viewsScreens/med_detail.dart';
 
 class DonationTabScreen extends StatefulWidget {
   final controller = Get.find<MainController>();
@@ -75,18 +75,17 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
                                         borderRadius: BorderRadius.circular(20),
                                         color: Colors.white,
                                       ),
-                                      child: Align(
+                                      child: Container(
                                         alignment: Alignment.bottomCenter,
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                              bottom: 25, right: 20),
-                                          child: Text(
-                                            medicineItem.name,
-                                            style: TextStyle(
-                                                color: Color(ColorCodes.font),
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 11),
-                                          ),
+                                        padding: EdgeInsets.only(
+                                            bottom: 25, right: 5),
+                                        child: Text(
+                                          //text alignment set!
+                                          medicineItem.name,
+                                          style: TextStyle(
+                                              color: Color(ColorCodes.font),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 11),
                                         ),
                                       ),
                                     ),

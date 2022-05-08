@@ -16,10 +16,10 @@ import '../Tabs/SaleTab.dart';
 import '../colorCode/colors.dart';
 import '../privacy_policy.dart';
 import 'addMedicine.dart';
-import 'myupload.dart';
 
 class Home_Screen extends StatefulWidget {
-  const Home_Screen({Key? key}) : super(key: key);
+  // int phone;
+  // Home_Screen({required this.phone});
 
   @override
   State<Home_Screen> createState() => _Home_ScreenState();
@@ -100,8 +100,8 @@ class _Home_ScreenState extends State<Home_Screen>
                 //   ],
                 // ),
               ),
-              accountName: Text('Hammad khan'),
-              accountEmail: Text('hammadkhan19978@gmail.com'),
+              accountName: Text(controller.userData.value.name),
+              accountEmail: Text(controller.userData.value.email),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Text(
@@ -112,14 +112,6 @@ class _Home_ScreenState extends State<Home_Screen>
                   ),
                 ),
               ),
-            ),
-            ListTile(
-              leading: Icon(Icons.upload_outlined, color: Color(ColorCodes.bg)),
-              title: Text('My Uploads',
-                  style: TextStyle(color: Color(ColorCodes.bg))),
-              onTap: () {
-                Get.to(() => MyUpload());
-              },
             ),
             ListTile(
               leading: Icon(Icons.upload_outlined, color: Color(ColorCodes.bg)),
@@ -148,23 +140,6 @@ class _Home_ScreenState extends State<Home_Screen>
               onTap: () {
                 Get.to(() => PrivacyPolicy());
               },
-            ),
-            ListTile(
-              leading:
-                  Icon(Icons.help_center_outlined, color: Color(ColorCodes.bg)),
-              title: Text(
-                'Help Center',
-                style: TextStyle(color: Color(ColorCodes.bg)),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.share_outlined, color: Color(ColorCodes.bg)),
-              title: Text(
-                'Share App',
-                style: TextStyle(color: Color(ColorCodes.bg)),
-              ),
-              onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.logout_outlined, color: Color(ColorCodes.bg)),

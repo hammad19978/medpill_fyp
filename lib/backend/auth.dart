@@ -12,6 +12,7 @@ import '../conrollers/main_controller.dart';
 class AuthHelper {
   static String tabelUsers = 'users';
   static String tableAdmin = 'admin';
+  static String phonevalue = '';
 
   FirebaseAuth auth = FirebaseAuth.instance;
   static String verificationid = '';
@@ -117,7 +118,7 @@ class AuthHelper {
         showToast('User Not Found!');
         return true;
       }
-      ;
+
       controller.userData(Users.fromMap(dbData.docs.first.data()));
       showToast('Welcome!');
       SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -127,8 +128,11 @@ class AuthHelper {
         preferences.setBool('isAdmin', true);
 
         Get.offAll(() => AdminHomeScreen());
-      } else
+      } else {
         Get.offAll(() => Home_Screen());
+        phonevalue = phone;
+      }
+
       return true;
     } catch (e) {}
     controller.isLoading(false);
