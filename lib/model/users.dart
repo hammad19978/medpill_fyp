@@ -44,7 +44,7 @@ class Users {
     );
   }
 
-  factory Users.fromJson(String json) => jsonDecode(json);
+  factory Users.fromJson(String json) => Users.fromMap(jsonDecode(json));
 
   toJson() => jsonEncode(toMap());
 }

@@ -107,6 +107,7 @@ class AuthHelper {
 
   Future<bool> login({required phone, required pass}) async {
     controller.isLoading(true);
+    print(controller.isAdmin.value.toString() + phone + pass);
     try {
       final dbData = await FirebaseFirestore.instance
           .collection(controller.isAdmin.value ? tableAdmin : tabelUsers)
@@ -122,7 +123,7 @@ class AuthHelper {
       controller.userData(Users.fromMap(dbData.docs.first.data()));
       showToast('Welcome!');
       SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString('user', controller.userData.toJson());
+      preferences.setString('user', controller.userData.value.toJson());
 
       APiMedicineHelper().fetchAllMedicinesDonate();
       APiMedicineHelper().fetchAllMedicinesSales();
