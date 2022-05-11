@@ -30,6 +30,7 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
     return Container(
       child: SingleChildScrollView(
         child: Container(
+          padding: EdgeInsets.only(bottom: 50),
           color: Color(ColorCodes.bg),
           height: h * 0.45,
           child: Obx(

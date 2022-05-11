@@ -51,6 +51,7 @@ class _Home_ScreenState extends State<Home_Screen>
       key: scaffoldKey,
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
+        animationCurve: Curves.bounceIn,
         backgroundColor: Color(ColorCodes.bg),
         items: <Widget>[
           Icon(Icons.home_outlined, size: 30, color: Color(ColorCodes.bg)),

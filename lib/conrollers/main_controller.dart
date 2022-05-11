@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:medpill_fyp/model/medicine.dart';
 import 'package:medpill_fyp/model/request.dart';
 import 'package:medpill_fyp/model/users.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../backend/helper.dart';
 
@@ -29,9 +30,14 @@ class MainController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
-      APiMedicineHelper().fetchAllMedicinesDonate();
-      APiMedicineHelper().fetchAllMedicinesSales();
+    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool _seen = prefs.containsKey('user');
+      bool isAmdin = prefs.containsKey('isAdmin');
+      if (_seen || isAmdin) {
+        APiMedicineHelper().fetchAllMedicinesDonate();
+        APiMedicineHelper().fetchAllMedicinesSales();
+      }
     });
   }
 }

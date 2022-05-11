@@ -123,6 +123,9 @@ class AuthHelper {
       showToast('Welcome!');
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString('user', controller.userData.toJson());
+
+      APiMedicineHelper().fetchAllMedicinesDonate();
+      APiMedicineHelper().fetchAllMedicinesSales();
       controller.isLoading(false);
       if (controller.isAdmin.value) {
         preferences.setBool('isAdmin', true);
