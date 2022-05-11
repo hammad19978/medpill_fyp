@@ -31,13 +31,12 @@ class MainController extends GetxController {
   void onInit() {
     super.onInit();
     SchedulerBinding.instance!.addPostFrameCallback((timeStamp) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      bool _seen = prefs.containsKey('user');
-      bool isAmdin = prefs.containsKey('isAdmin');
-      if (_seen || isAmdin) {
-        APiMedicineHelper().fetchAllMedicinesDonate();
-        APiMedicineHelper().fetchAllMedicinesSales();
-      }
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      Users.fromJson(preferences.containsKey('user')
+          ? preferences.getString('user')!
+          : '');
+      APiMedicineHelper().fetchAllMedicinesDonate();
+      APiMedicineHelper().fetchAllMedicinesSales();
     });
   }
 }

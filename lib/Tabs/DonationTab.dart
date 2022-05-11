@@ -16,6 +16,7 @@ class DonationTabScreen extends StatefulWidget {
 }
 
 class _DonationTabScreenState extends State<DonationTabScreen> {
+  final controller = Get.find<MainController>();
   @override
   void initState() {
     // TODO: implement initState
@@ -48,6 +49,9 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
                     : GridView.count(
                         crossAxisCount: 2,
                         children: widget.controller.medicineListDonatefound
+                            .where((element) =>
+                                element.uPhoneno !=
+                                controller.userData.value.phone)
                             .map((medicineItem) {
                           return Center(
                             child: InkWell(

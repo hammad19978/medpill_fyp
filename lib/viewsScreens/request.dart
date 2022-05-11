@@ -53,15 +53,23 @@ class _RequestScreenState extends State<RequestScreen> {
                     itemCount: controller.requestListAdmin.length,
                     itemBuilder: (ctx, index) {
                       final item = controller.requestListAdmin[index];
+
                       final byUser = Users.fromMap(item.byPhone);
+
                       final toUser = Users.fromMap(item.toPhone);
+
                       // ucnic = byUser.cnic;
                       // uphone = byUser.phone;
                       // uname = byUser.name;
                       // uemail = byUser.email;
-
                       final medicine = Medicine.fromMap(item.medicineID);
-                      if (medicine.uPhoneno == controller.userData.value.phone)
+                      print(index.toString() +
+                          ' . . . ' +
+                          toUser.phone +
+                          ' . . . ' +
+                          controller.userData.value.phone);
+
+                      if (toUser.phone == controller.userData.value.phone)
                         return Container(
                           padding: EdgeInsets.all(10),
                           child: Container(

@@ -7,6 +7,7 @@ import 'package:medpill_fyp/backend/helper.dart';
 import 'package:medpill_fyp/conrollers/main_controller.dart';
 import 'package:medpill_fyp/model/medicine.dart';
 import 'package:medpill_fyp/model/request.dart';
+import 'package:medpill_fyp/model/users.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../colorCode/colors.dart';
@@ -120,6 +121,24 @@ class _BookDetailState extends State<BookDetail> {
                   padding: EdgeInsets.only(left: 10),
                   alignment: Alignment.topLeft,
                   child: Text(
+                    'Phone Number',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  )),
+              Container(
+                  height: h * 0.035,
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    '         ' + widget.medobj.uPhoneno,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  )),
+              Container(
+                  height: h * 0.035,
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.topLeft,
+                  child: Text(
                     'Medicine Condition',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.white),
@@ -221,7 +240,7 @@ class _BookDetailState extends State<BookDetail> {
               ),
               Obx(
                 () => controller.isLoading.value
-                    ? CircularProgressIndicator(color: Colors.white)
+                    ? CircularProgressIndicator(color: Colors.black)
                     : Container(
                         alignment: Alignment.bottomCenter,
                         child: RaisedButton(
@@ -229,12 +248,20 @@ class _BookDetailState extends State<BookDetail> {
                             Request request = Request.empty();
                             request.byPhone =
                                 controller.userData.value.toMap(); // login wala
-                            request.toPhone = widget.medobj.toMap();
+                            Users u = Users(
+                                name: '',
+                                phone: widget.medobj.uPhoneno,
+                                email: '',
+                                cnic: '',
+                                password: '');
+                            print(u.phone);
+                            request.toPhone = u.toMap();
                             request.medicineID = widget.medobj.toMap();
                             request.status = 'request';
                             request.mesaage = messageController.text;
 
-                            APiMedicineHelper().requestAMedicine(request);
+                            APiMedicineHelper()
+                                .requestAMedicine(request.toMap());
                           },
                           child: Container(
                               child: Text('Request Product',

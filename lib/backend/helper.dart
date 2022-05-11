@@ -39,8 +39,8 @@ class APiMedicineHelper {
 
   // get allRequestedAccepted  med
   Future<void> fetchallAcceptedRequests() async {
-    controller.requestListAdmin.clear();
     controller.isLoading(true);
+    controller.requestListAdmin.clear();
 
     try {
       final data = await FirebaseFirestore.instance
@@ -75,16 +75,22 @@ class APiMedicineHelper {
   }
 
   ///
-  Future<void> requestAMedicine(Request request) async {
+  Future<void> requestAMedicine(Map<String, dynamic> request) async {
     controller.isLoading(true);
     try {
       await FirebaseFirestore.instance
           .collection(tabelRequest)
-          .add(request.toMap());
+          .add(request)
+          .then((value) async {
+        print('AFTER _ \n ${value}');
+        print((await value.get()).data());
+      });
+      print(request);
       showToast('Request SuccessFully!');
     } catch (e) {
       showToast('Error Occur!');
     }
+    Get.back();
     controller.isLoading(false);
   }
   //////////////////////////////////////////
