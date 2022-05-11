@@ -66,7 +66,6 @@ class _RequestScreenState extends State<RequestScreen> {
                           padding: EdgeInsets.all(10),
                           child: Container(
                               padding: EdgeInsets.all(5),
-                              height: h * 0.4,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
@@ -94,11 +93,12 @@ class _RequestScreenState extends State<RequestScreen> {
                                                     fit: BoxFit.fill),
                                               ),
                                             )),
-                                        Container(
-                                          //width: w*0.6,
-                                          child: Row(
+                                        Flexible(
+                                          child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Container(
                                                 // width: w * 0.5,
@@ -221,6 +221,9 @@ class _RequestScreenState extends State<RequestScreen> {
                                                               byUser.phone);
                                                     },
                                                     child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
                                                         Icon(
                                                           Icons.call,

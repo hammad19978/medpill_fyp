@@ -51,7 +51,6 @@ class _Home_ScreenState extends State<Home_Screen>
       key: scaffoldKey,
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
-        animationCurve: Curves.bounceIn,
         backgroundColor: Color(ColorCodes.bg),
         items: <Widget>[
           Icon(Icons.home_outlined, size: 30, color: Color(ColorCodes.bg)),
@@ -59,24 +58,20 @@ class _Home_ScreenState extends State<Home_Screen>
           Icon(Icons.person_outline_rounded,
               size: 30, color: Color(ColorCodes.bg)),
         ],
+        index: _page!,
         onTap: (index) {
-          setState(() {
-            _page = index;
-            Timer(Duration(milliseconds: 560), () {
-              //(_page == 1) ? Get.to(AddBook()) : Home_Screen();
-              if (_page == 0) {
-                Get.to(Home_Screen());
-                _page == 0;
-              }
-              if (_page == 1) {
-                Get.to(AddBook());
-                _page == 1;
-              }
-              if (_page == 2) {
-                Get.to(ProfileScreen());
-                _page == 2;
-              }
-            });
+          _page = index;
+          Timer(Duration(milliseconds: 100), () {
+            //(_page == 1) ? Get.to(AddBook()) : Home_Screen();
+            if (_page == 0) {
+              Get.to(() => Home_Screen());
+            }
+            if (_page == 1) {
+              Get.to(() => AddBook());
+            }
+            if (_page == 2) {
+              Get.to(() => ProfileScreen());
+            }
           });
         },
       ),
