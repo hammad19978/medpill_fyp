@@ -6,7 +6,15 @@ import 'package:medpill_fyp/conrollers/main_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: 'AIzaSyBeYeiC6zRCpmjcmtF-OZuVOGDm6K-wafw',
+      appId: '1:1073219977580:android:339c8e600a0af96aceb349',
+      messagingSenderId: 'messagingSenderId',
+      projectId: 'medpill-26293',
+      storageBucket: 'medpill-26293.appspot.com',
+    ),
+  );
 
   runApp(MyApp());
 }
