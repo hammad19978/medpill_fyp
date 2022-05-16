@@ -99,6 +99,7 @@ class APiMedicineHelper {
   // get all med
   Future<void> fetchAllMedicinesSales() async {
     controller.isLoading(true);
+    controller.medicineListSale.clear();
     final data = await FirebaseFirestore.instance
         .collection(tabelMedicien)
         .where('type', isNotEqualTo: 'Donation')
@@ -113,6 +114,7 @@ class APiMedicineHelper {
   // get all med
   Future<void> fetchAllMedicinesDonate() async {
     controller.isLoading(true);
+    controller.medicineListDonate.clear();
     final data = await FirebaseFirestore.instance
         .collection(tabelMedicien)
         .where('type', isEqualTo: 'Donation')
@@ -132,10 +134,10 @@ class APiMedicineHelper {
           .collection(tabelMedicien)
           .add(medicine.toMap());
       showToast('Added SuccessFully!');
-      if (medicine.type == 'Donation')
-        controller.medicineListDonate.add(medicine);
-      else
-        controller.medicineListSale.add(medicine);
+      // if (medicine.type == 'Donation')
+      //   controller.medicineListDonate.add(medicine);
+      // else
+      //   controller.medicineListSale.add(medicine);
     } catch (e) {
       showToast('Error Occur!');
     }

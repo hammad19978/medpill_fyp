@@ -32,11 +32,10 @@ class MainController extends GetxController {
     super.onInit();
     SchedulerBinding.instance!.addPostFrameCallback((timeStamp) async {
       SharedPreferences preferences = await SharedPreferences.getInstance();
-      print(preferences.getString('user')!);
+
       var a = Users.fromJson(preferences.containsKey('user')
           ? preferences.getString('user')!
           : '');
-      print(a);
       userData(a);
       APiMedicineHelper().fetchAllMedicinesDonate();
       APiMedicineHelper().fetchAllMedicinesSales();

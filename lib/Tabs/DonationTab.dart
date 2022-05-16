@@ -39,7 +39,12 @@ class _DonationTabScreenState extends State<DonationTabScreen> {
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : widget.controller.medicineListDonate.isEmpty
+                : widget.controller.medicineListDonate.isEmpty ||
+                        widget.controller.medicineListDonatefound
+                            .where((element) =>
+                                element.uPhoneno !=
+                                controller.userData.value.phone)
+                            .isEmpty
                     ? Center(
                         child: Text(
                           'Empty',

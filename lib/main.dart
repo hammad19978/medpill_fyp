@@ -15,7 +15,6 @@ void main() async {
       storageBucket: 'medpill-26293.appspot.com',
     ),
   );
-
   runApp(MyApp());
 }
 
