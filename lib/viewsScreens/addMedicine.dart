@@ -26,10 +26,10 @@ class _AddBookState extends State<AddBook> {
 
   String _selectedGender = 'Negotiable';
   List<String> booktype_items = <String>[
-    'Donation',
-    'Sale',
+    'Donate',
+    'Sell',
   ];
-  String booktype_dropdownval = 'Donation';
+  String booktype_dropdownval = 'Donate';
 
   final controller = Get.find<MainController>();
   final ImagePicker imgpicker = ImagePicker();
@@ -109,7 +109,7 @@ class _AddBookState extends State<AddBook> {
                     style: TextStyle(color: Color(ColorCodes.font)),
                     maxLength: 30,
                     decoration: InputDecoration(
-                      hintText: 'Mention Name of the medicine',
+                      hintText: 'Enter Name of the medicine',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white70,
@@ -145,7 +145,7 @@ class _AddBookState extends State<AddBook> {
                     style: TextStyle(color: Color(ColorCodes.font)),
                     maxLength: 30,
                     decoration: InputDecoration(
-                      hintText: 'Mention Name of the formula',
+                      hintText: 'Enter Name of the formula',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white70,
@@ -216,7 +216,7 @@ class _AddBookState extends State<AddBook> {
                     keyboardType: TextInputType.number,
                     maxLength: 30,
                     decoration: InputDecoration(
-                      hintText: 'Mention Expiry Date of the medicine',
+                      hintText: 'Enter Expiry Date of the medicine',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white70,
@@ -253,7 +253,7 @@ class _AddBookState extends State<AddBook> {
                     keyboardType: TextInputType.number,
                     maxLength: 30,
                     decoration: InputDecoration(
-                      hintText: 'Mention Quantity of Tablets',
+                      hintText: 'Enter Quantity of Tablets',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white70,
@@ -297,7 +297,7 @@ class _AddBookState extends State<AddBook> {
                   ),
                 ),
                 SizedBox(height: h * 0.035),
-                (booktype_dropdownval == 'Sale')
+                (booktype_dropdownval == 'Sell')
                     ? Container(
                         child: Column(
                           children: [
@@ -320,7 +320,7 @@ class _AddBookState extends State<AddBook> {
                                 keyboardType: TextInputType.number,
                                 maxLength: 30,
                                 decoration: InputDecoration(
-                                  hintText: 'Mention Price of the medicine',
+                                  hintText: 'Enter Price of the medicine',
                                   hintStyle: TextStyle(color: Colors.grey),
                                   filled: true,
                                   fillColor: Colors.white70,
@@ -395,7 +395,7 @@ class _AddBookState extends State<AddBook> {
                     maxLines: 6,
                     maxLength: 200,
                     decoration: InputDecoration(
-                      hintText: 'Mention description of the medicine',
+                      hintText: 'Enter description of the medicine',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white70,

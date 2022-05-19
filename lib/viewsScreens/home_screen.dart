@@ -45,6 +45,7 @@ class _Home_ScreenState extends State<Home_Screen>
     TabController _controller = new TabController(length: 2, vsync: this);
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
+    print(h.toString() + '1111111111111111111111111111111111111111111111');
     TextEditingController _seachcontr = new TextEditingController();
 
     return Scaffold(
@@ -126,6 +127,15 @@ class _Home_ScreenState extends State<Home_Screen>
                 Get.to(() => ContactUs());
               },
             ),
+            // ListTile(
+            //   leading:
+            //       Icon(Icons.contacts_outlined, color: Color(ColorCodes.bg)),
+            //   title: Text('My Uploads',
+            //       style: TextStyle(color: Color(ColorCodes.bg))),
+            //   onTap: () {
+            //     Get.to(() => MyUpload());
+            //   },
+            // ),
             ListTile(
               leading:
                   Icon(Icons.privacy_tip_outlined, color: Color(ColorCodes.bg)),

@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminHomeScreen extends StatelessWidget {
   AdminHomeScreen({Key? key}) : super(key: key) {
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       APiMedicineHelper().fetchallRequests();
     });
   }

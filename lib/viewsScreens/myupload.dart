@@ -23,21 +23,18 @@ class _MyUploadState extends State<MyUpload> {
         ),
         backgroundColor: Colors.white,
         title: Text(
-          "My Uploads",
+          'My Uploads',
           style: TextStyle(color: Color(ColorCodes.bg)),
         ),
       ),
-      
-
       body: GridView.count(
         crossAxisCount: 1,
         children: List.generate(20, (index) {
           return Container(
             decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Color(ColorCodes.bg)),
+                borderRadius: BorderRadius.circular(50),
+                color: Color(ColorCodes.bg)),
             child: Container(
-              
               child: Row(
                 children: [
                   Container(
@@ -48,10 +45,11 @@ class _MyUploadState extends State<MyUpload> {
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
                         size: Size.fromRadius(48), // Image radius
-                        child: Image.asset('assets/chewcal.jpg', fit: BoxFit.fill),
+                        child:
+                            Image.asset('assets/chewcal.jpg', fit: BoxFit.fill),
                       ),
                     ),
-          
+
                     alignment: Alignment.center,
                   ),
                   Container(
@@ -67,7 +65,7 @@ class _MyUploadState extends State<MyUpload> {
                               Container(
                                   padding: EdgeInsets.only(left: 20, top: 20),
                                   child: Text(
-                                    "Medicine Name",
+                                    'Medicine Name',
                                     style: TextStyle(color: Colors.white),
                                   )),
                               Spacer(
@@ -97,7 +95,7 @@ class _MyUploadState extends State<MyUpload> {
                               Container(
                                 padding: EdgeInsets.only(left: 30),
                                 child: Text(
-                                  "City Name",
+                                  'City Name',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
@@ -106,7 +104,7 @@ class _MyUploadState extends State<MyUpload> {
                               ),
                               Container(
                                 padding: EdgeInsets.only(right: 5),
-                                child: Text("Views: 20",
+                                child: Text('Views: 20',
                                     style: TextStyle(color: Colors.white)),
                               )
                             ],
@@ -118,13 +116,13 @@ class _MyUploadState extends State<MyUpload> {
                           child: Row(
                             children: [
                               Container(
-                                width: w*0.2,
-                                height: h*0.1,
+                                width: w * 0.2,
+                                height: h * 0.1,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Color(ColorCodes.font)),
-                                child: Text("Approved",
+                                child: Text('Approved',
                                     style: TextStyle(color: Colors.white)),
                               ),
                               Spacer(
@@ -132,9 +130,9 @@ class _MyUploadState extends State<MyUpload> {
                               ),
                               Container(
                                 padding: EdgeInsets.only(right: 5),
-                                child: Text("8 days ago",
+                                child: Text('8 days ago',
                                     style: TextStyle(color: Colors.white)),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -142,7 +140,7 @@ class _MyUploadState extends State<MyUpload> {
                           height: h * 0.05,
                           padding: EdgeInsets.only(left: 10),
                           alignment: Alignment.centerLeft,
-                          child: Text("Your Medicine has been lived",
+                          child: Text('Your Medicine has been lived',
                               style: TextStyle(color: Colors.white)),
                         ),
                       ],
